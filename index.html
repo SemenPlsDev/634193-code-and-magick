@@ -180,8 +180,41 @@
     <p class="setup-similar-label">Петр Петров</p>
   </div>
 </template>
+<script>
+/*Объявляем размер фаербола*/
+var fireballSize = 22;
 
+/*Объявляем функцию скорости полета фаербола*/
+var getFireballSpeed = function(left){
+  var left = left || true;
+  if (left == true) {
+      return 5;
+ } else {
+      return 2;
+ }
+}
+
+/*Устанавливаем скорость переджижения мага*/
+var wizardSpeed = 3;
+
+/*Устанавливаем щирину мага*/
+var wizardWidth = 70;
+
+/*Задаем пропорционатльную высоту мага относительно ширины*/
+var getWizardHeight = function(wizardWidth){
+      return 1.337 * wizardWidth;
+}
+
+/*Определяем функцию положения мага по горизонтали*/
+function getWizardX(width){
+    return width /2 - wizardWidth /2;
+}
+
+/*Определяем функцию положения мага по вертикали*/
+function getWizardY(height){
+    return height /= 3;
+}
+</script>
 <script src="js/game.js"></script>
-
 </body>
 </html>
