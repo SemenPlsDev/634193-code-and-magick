@@ -185,7 +185,7 @@
 var fireballSize = 22;
 
 /*Объявляем функцию скорости полета фаербола*/
-var getFireballSpeed = function ball(left){
+var getFireballSpeed = function(left){
   var left = left || true;
   if (left == true) {
       return 5;
@@ -201,8 +201,8 @@ var wizardSpeed = 3;
 var wizardWidth = 70;
 
 /*Задаем пропорционатльную высоту мага относительно ширины*/
-var getWizardHeight = function wizard(wizardWidth){
-      return WizardHeight = 1.337 * wizardWidth;
+var getWizardHeight = function(wizardWidth){
+      return 1.337 * wizardWidth;
 }
 
 /*Определяем функцию положения мага по горизонтали*/
