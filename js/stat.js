@@ -1,5 +1,4 @@
-//'use strict';
-
+//Задаем переменные
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
@@ -13,12 +12,13 @@ var HEIGHT_BAR = 230;
 var names = ['Вы', 'Ваня', 'Катя', 'Олег'];
 var times = [2900, 2000, 1500, 2800];
 
-
+//Задаем функцию отрисовки облака
 var renderCloud = function(ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+//Задаем функцию нахождения максимального элемента
 var getMaxElement = function(arr){
   var maxElement = arr[0];
 
@@ -30,6 +30,7 @@ var getMaxElement = function(arr){
   return maxElement;
 };
 
+//Задаем функцию отриcовки статистики
 window.renderStatistics = function(ctx, names, time) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -39,33 +40,24 @@ window.renderStatistics = function(ctx, names, time) {
   ctx.fillText("Ура вы победили!", 115, 40);
   ctx.fillText("Список результатов: ", 115, 60);
 
+  ctx.fillStyle = 'rgba(255, 0, 0, 1)';
 
-//ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+  var maxTime = getMaxElement(times);
 
-var maxTime = getMaxElement(times);
+  for (var i = 0; i < names.length; i++) {
+    ctx.fillText(names[i], CLOUD_X + barWidth + (BAR_GAP + barWidth) * i, TEXT_HEIGHT );
+    ctx.fillRect(CLOUD_X + barWidth + (BAR_GAP + barWidth) * i , HEIGHT_BAR, barWidth, (-MAX_BAR * times[i]) / maxTime);
 
-
-
-for (var i = 0; i < names.length; i++) {
-  ctx.fillText(names[i], CLOUD_X + barWidth + (BAR_GAP + barWidth) * i, TEXT_HEIGHT );
-  ctx.fillRect(CLOUD_X + barWidth + (BAR_GAP + barWidth) * i , HEIGHT_BAR, barWidth, (-MAX_BAR * times[i]) / maxTime);
-    if(names[i] = ['Вы']) {
-       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    } else {
-       ctx.fillStyle = 'blue';
+      if(names[i] = ['Вы']) {
+        ctx.fillStyle = 'rgb(50, 21, 179)';
+        ctx.globalAlpha = 0.9*Math.random();
+      }
     }
-  }
-};
-
-/*if(names[i] = 'Вы'){
-    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-  } else {
-    ctx.fillStyle = '#000';
-};*/
+  };
 
 
 
 
 
- //ctx.fillRect(CLOUD_X + barWidth + (BAR_GAP + WIDTH_KOLONKI) * i , HEIGHT_BAR, barWidth, (MAX_BAR * times[i]) / maxTime);
- //ctx.fillRect(CLOUD_X + barWidth + (BAR_GAP + barWidth) * i , HEIGHT_BAR, barWidth, -MAX_BAR);
+
+
