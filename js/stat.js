@@ -40,7 +40,7 @@ window.renderStatistics = function(ctx, names, time) {
   ctx.fillText("Ура вы победили!", 115, 40);
   ctx.fillText("Список результатов: ", 115, 60);
 
-  ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+
 
   var maxTime = getMaxElement(times);
 
@@ -49,6 +49,9 @@ window.renderStatistics = function(ctx, names, time) {
     ctx.fillRect(CLOUD_X + barWidth + (BAR_GAP + barWidth) * i , HEIGHT_BAR, barWidth, (-MAX_BAR * times[i]) / maxTime);
 
       if(names[i] = ['Вы']) {
+        ctx.fillStyle = ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+
+      } else {
         ctx.fillStyle = 'rgb(50, 21, 179)';
         ctx.globalAlpha = 0.9*Math.random();
       }
