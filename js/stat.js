@@ -40,13 +40,13 @@ window.renderStatistics = function(ctx, names, times) {
 
   var maxTime = getMaxElement(times);
 
+
   for (var i = 0; i < names.length; i++) {
   if(names[i] == 'Вы') {
       ctx.fillStyle ='rgba(255, 0, 0, 1)';
     } else {
+      ctx.fillStyle = 'rgba(44, 10, 240, ' + Math.random() + ')' ;
 
-      ctx.fillStyle = 'rgb(0, 0, 255)' ;
-      ctx.globalAlpha = 0.9*Math.random();
     }
   ctx.fillText(names[i], CLOUD_X + BARWIDTH + (BAR_GAP + BARWIDTH) * i, TEXT_HEIGHT );
   ctx.fillRect(CLOUD_X + BARWIDTH + (BAR_GAP + BARWIDTH) * i , HEIGHT_BAR, BARWIDTH, (-MAX_BAR * times[i]) / maxTime);
