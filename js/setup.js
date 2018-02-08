@@ -51,6 +51,16 @@ var wizards = [
   }
 ];
 
+//функцию заполнения блока DOM-элементами на основе массива JS-объектов.
+var renderWizard = function (wizard) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+
+  return wizardElement;
+}
 
 
 
