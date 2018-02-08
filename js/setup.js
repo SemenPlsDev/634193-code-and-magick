@@ -21,7 +21,35 @@ var getRandomValue = function (arr){
   return arr[rand];
 };
 
+var userDialog = document.querySelector('.setup');
+userDialog.classList.remove('hidden');
+var similarListElement = userDialog.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 
+
+// Массив из объектов со случайно сгенерированными данными
+var wizards = [
+  {
+    name: getRandomValue(WIZARD_NAMES) + ' ' + getRandomValue(WIZARD_SURNAMES),
+    coatColor: getRandomValue(coatColor),
+    eyesColor:getRandomValue(eyesColor)
+  },
+  {
+    name: getRandomValue(WIZARD_NAMES) + ' ' + getRandomValue(WIZARD_SURNAMES),
+    coatColor: getRandomValue(coatColor),
+    eyesColor:getRandomValue(eyesColor)
+  },
+  {
+    name: getRandomValue(WIZARD_NAMES) + ' ' + getRandomValue(WIZARD_SURNAMES),
+    coatColor: getRandomValue(coatColor),
+    eyesColor:getRandomValue(eyesColor)
+  },
+  {
+    name: getRandomValue(WIZARD_NAMES) + ' ' + getRandomValue(WIZARD_SURNAMES),
+    coatColor: getRandomValue(coatColor),
+    eyesColor:getRandomValue(eyesColor)
+  }
+];
 
 
 
