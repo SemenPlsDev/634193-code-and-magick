@@ -1,5 +1,5 @@
 'use strict';
-
+//--------------------------------------------------------------------------------------------------
 // Прописывем переменные
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
@@ -14,7 +14,7 @@ var PLAYER_COATS = [
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-
+//--------------------------------------------------------------------------------------------------
 // Нажатие на элемент .setup-open удаляет класс hidden
 // у блока setup. Нажатие на элемент .setup-close, расположенный
 // внутри блока setup возвращает ему класс hidden.
@@ -23,6 +23,8 @@ var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
 
+
+//--------------------------------------------------------------------------------------------------
 // Прописывем функции для обработчиков событий
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -41,6 +43,8 @@ var closePopup = function () {
 };
 
 
+
+//--------------------------------------------------------------------------------------------------
 // Добавляем обработчики событий
 setupOpen.addEventListener('click', function () {
   openPopup();
@@ -64,16 +68,22 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 
+
+//--------------------------------------------------------------------------------------------------
 // функция генерации случайных данных
 var getRandomValue = function (arr) {
   var rand = Math.floor(Math.random() * arr.length);
   return arr[rand];
 };
 
+
+//--------------------------------------------------------------------------------------------------
 // Находим объект PLAYER
 var setupPlayer = document.querySelector('.setup-player');
 
 
+
+//--------------------------------------------------------------------------------------------------
 // Функция изменения цвета в зависимости от тега
 var colorChange = function (target, colors) {
   if (target.tagName === 'use') {
@@ -85,6 +95,8 @@ var colorChange = function (target, colors) {
   }
 };
 
+
+//--------------------------------------------------------------------------------------------------
 // Проверка объекта
 var wizardSetupChange = function (evt) {
   var target = evt.target; // где был клик?
@@ -101,11 +113,15 @@ var wizardSetupChange = function (evt) {
   }
 };
 
+
+//--------------------------------------------------------------------------------------------------
 // Прописываем функцию для элемента
 var runSetupPopup = function () {
   setupPlayer.addEventListener('click', wizardSetupChange);
 };
 
+
+//--------------------------------------------------------------------------------------------------
 // Запуск функции для элемента
 runSetupPopup();
 
