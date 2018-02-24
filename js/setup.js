@@ -1,29 +1,27 @@
 'use strict';
 //--------------------------------------------------------------------------------------------------
 // Прописывем переменные
+
+(function () {
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
-var PLAYER_COATS = [
-  'rgb(101, 137, 164)',
-  'rgb(241, 43, 107)',
-  'rgb(146, 100, 161)',
-  'rgb(56, 159, 117)',
-  'rgb(215, 210, 55)',
-  'rgb(0, 0, 0)'
-];
-var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var HIDDEN = 'hidden';
 
-//--------------------------------------------------------------------------------------------------
-// Нажатие на элемент .setup-open удаляет класс hidden
-// у блока setup. Нажатие на элемент .setup-close, расположенный
-// внутри блока setup возвращает ему класс hidden.
-var setup = document.querySelector('.setup');
+  window.getRandomValue = function (arrayOfData) {
+    var elementIndex = getRandomIndexInArray(arrayOfData);
+
+    return arrayOfData[elementIndex];
+  };
+
+  var getRandomIndexInArray = function (items) {
+    return Math.floor(Math.random() * items.length);
+  };
+
+window.setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
-var setupClose = setup.querySelector('.setup-close');
-
-
-
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = window.setup.querySelector('.setup-close');
+window.setup.querySelector('.setup-similar').classList.remove(HIDDEN)
 //--------------------------------------------------------------------------------------------------
 // Прописывем функции для обработчиков событий
 var onPopupEscPress = function (evt) {
@@ -33,21 +31,20 @@ var onPopupEscPress = function (evt) {
 };
 
 var openPopup = function () {
-  setup.classList.remove('hidden');
+  window.setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
 };
 
 var closePopup = function () {
-  setup.classList.add('hidden');
+  window.setup.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
 };
-
 
 
 //--------------------------------------------------------------------------------------------------
 // Добавляем обработчики событий
 setupOpen.addEventListener('click', function () {
-  openPopup();
+      openPopup();
 });
 
 setupOpen.addEventListener('keydown', function (evt) {
@@ -68,61 +65,6 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 
-
 //--------------------------------------------------------------------------------------------------
-// функция генерации случайных данных
-var getRandomValue = function (arr) {
-  var rand = Math.floor(Math.random() * arr.length);
-  return arr[rand];
-};
 
-
-//--------------------------------------------------------------------------------------------------
-// Находим объект PLAYER
-var setupPlayer = document.querySelector('.setup-player');
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Функция изменения цвета в зависимости от тега
-var colorChange = function (target, colors) {
-  if (target.tagName === 'use') {
-    target.style.fill = getRandomValue(colors);
-  }
-
-  if (target.tagName === 'DIV') {
-    target.parentNode.style.backgroundColor = getRandomValue(colors);
-  }
-};
-
-
-//--------------------------------------------------------------------------------------------------
-// Проверка объекта
-var wizardSetupChange = function (evt) {
-  var target = evt.target; // где был клик?
-
-  if (target.classList.contains('wizard-coat')) {
-    colorChange(target, PLAYER_COATS);
-  }
-
-  if (target.classList.contains('wizard-eyes')) {
-    colorChange(target, EYES_COLORS);
-  }
-  if (target.classList.contains('setup-fireball')) {
-    colorChange(target, FIREBALL_COLORS);
-  }
-};
-
-
-//--------------------------------------------------------------------------------------------------
-// Прописываем функцию для элемента
-var runSetupPopup = function () {
-  setupPlayer.addEventListener('click', wizardSetupChange);
-};
-
-
-//--------------------------------------------------------------------------------------------------
-// Запуск функции для элемента
-runSetupPopup();
-
-
+})();
