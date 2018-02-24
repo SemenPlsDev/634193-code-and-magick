@@ -27,47 +27,47 @@
   ];
 
 
-//--------------------------------------------------------------------------------------------------
-// Находим объект PLAYER
-var setupPlayer = document.querySelector('.setup-player');
+  // --------------------------------------------------------------------------------------------------
+  // Находим объект PLAYER
+  var setupPlayer = document.querySelector('.setup-player');
 
 
-//--------------------------------------------------------------------------------------------------
-// Функция изменения цвета в зависимости от тега
-var colorChange = function (target, colors) {
-  if (target.tagName === 'use') {
-    target.style.fill = window.getRandomValue(colors);
-  }
+  // --------------------------------------------------------------------------------------------------
+  // Функция изменения цвета в зависимости от тега
+  var colorChange = function (target, colors) {
+    if (target.tagName === 'use') {
+      target.style.fill = window.getRandomValue(colors);
+    }
 
-  if (target.tagName === 'DIV') {
-    target.parentNode.style.backgroundColor = window.getRandomValue(colors);
-  }
-};
-
-
-//--------------------------------------------------------------------------------------------------
-// Проверка объекта
-var wizardSetupChange = function (evt) {
-  var target = evt.target; // где был клик?
-
-  if (target.classList.contains('wizard-coat')) {
-    colorChange(target, PLAYER_COATS);
-  }
-
-  if (target.classList.contains('wizard-eyes')) {
-    colorChange(target, EYES_COLORS);
-  }
-  if (target.classList.contains('setup-fireball')) {
-    colorChange(target, FIREBALL_COLORS);
-  }
-};
+    if (target.tagName === 'DIV') {
+      target.parentNode.style.backgroundColor = window.getRandomValue(colors);
+    }
+  };
 
 
-//--------------------------------------------------------------------------------------------------
-// Прописываем функцию для элемента
-var runSetupPopup = function () {
-  setupPlayer.addEventListener('click', wizardSetupChange);
-};
+  // --------------------------------------------------------------------------------------------------
+  // Проверка объекта
+  var wizardSetupChange = function (evt) {
+    var target = evt.target; // где был клик?
 
-runSetupPopup();
+    if (target.classList.contains('wizard-coat')) {
+      colorChange(target, PLAYER_COATS);
+    }
+
+    if (target.classList.contains('wizard-eyes')) {
+      colorChange(target, EYES_COLORS);
+    }
+    if (target.classList.contains('setup-fireball')) {
+      colorChange(target, FIREBALL_COLORS);
+    }
+  };
+
+
+  // --------------------------------------------------------------------------------------------------
+  // Прописываем функцию для элемента
+  var runSetupPopup = function () {
+    setupPlayer.addEventListener('click', wizardSetupChange);
+  };
+
+  runSetupPopup();
 })();
